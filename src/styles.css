@@ -1,2 +1,8 @@
 @import "tailwindcss";
 @plugin "daisyui";
+@layer base {
+  @font-face {
+    font-family:"montserrat" ;
+    src: url('/assets/fonts/montserrat-alternates/Montserrat-Medium.ttf') format('truetype');
+  }
+}

@@ -1,5 +1,13 @@
 {
   "plugins": {
     "@tailwindcss/postcss": {}
+  },
+  "theme": {
+    "fontFamily": {
+      "montserrat": [
+        "Montserrat",
+        "sans-serif"
+      ]
+    }
   }
 }
