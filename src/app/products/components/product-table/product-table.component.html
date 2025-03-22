@@ -1,0 +1,65 @@
+<div class="overflow-x-auto">
+  <table class="table">
+    <!-- head -->
+    <thead>
+      <tr>
+        <th>
+          <label>
+            <input type="checkbox" class="checkbox" id="select-all" />
+            <label for="select-all" class="sr-only">Select all products</label>
+          </label>
+        </th>
+        <th>Titulo</th>
+        <th>Precio</th>
+        <th>Inventario</th>
+        <th>.</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (product of products(); track product.id) {
+      <tr>
+        <th>
+          <label>
+            <input type="checkbox" class="checkbox" id="product-select-{{ product.id }}" />
+            <label for="product-select-{{ product.id }}" class="sr-only">Select product {{ product.title }}</label>
+          </label>
+        </th>
+        <td>
+          <div class="flex items-center gap-3">
+            <div class="avatar">
+              <div class="mask mask-squircle h-12 w-12">
+                <img [src]="product.images | productImage" [alt]="product.title" />
+              </div>
+            </div>
+            <div>
+              <a [routerLink]="['/admin/products', product.id]" class="font-bold">{{ product.title}}</a>
+              <div class="text-sm opacity-50">
+                {{ product.sizes.join(', ') }}
+              </div>
+            </div>
+          </div>
+        </td>
+        <td>
+          {{ product.price | currency }}
+        </td>
+        <td>
+          @if (product.stock <= 10) { <span class="bagde bagde-error">{{ product.stock }}</span>
+            }
+            @else if (product.stock <= 20) { <span class="bagde bagde-warning">{{ product.stock }}</span>
+              }
+              @else {
+              <span class="bagde">{{ product.stock }}</span>
+              }
+        </td>
+        <th>
+          <a [routerLink]="['/admin/products',product.id]" class="btn btn-ghost text-accent btn-xs">Detalles</a>
+        </th>
+      </tr>
+      }
+
+
+    </tbody>
+    <!-- foot -->
+
+  </table>
+</div>
